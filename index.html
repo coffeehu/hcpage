@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" type="text/css" href="./css/hcpage.css">
+
+	<script type="text/javascript" src="./js/hcpage.js"></script>
+
+	 <style type="text/css">
+
+	 </style>
+</head>
+<body>    
+    <div>
+        <div class="hcpage">
+            <a href="" class="hcpage-disabled">上一页</a>
+            <span class="hcpage-curr">1</span>
+            <a href="">2</a>
+            <span>...</span>
+            <a href="">尾页</a>
+            <a href="">下一页</a>
+            <span class="hcpage-count">共 90 条</span>
+        </div>
+    </div>
+
+    <div>
+        <div class="hcpage">
+            <a href="">上一页</a>
+            <a href="">首页</a>
+            <span>...</span>
+            <span  class="hcpage-curr">3</span>
+            <a href="">4</a>
+            <span>...</span>
+            <a href="">尾页</a>
+            <a href="">下一页</a>
+            <span class="hcpage-count">共 90 条</span>
+        </div>
+    </div>
+
+    <hr />
+    <h1 style="font-size: 24px">hcpage</h1>
+    <div id="mpage"></div>
+
+    <script type="text/javascript">
+
+        hcpage.init({
+            layout: [ 'prev','page','next','count'],
+            id:'mpage',
+            count : 91,
+            limit : 10,
+            //curr : 3,
+            groups:3,
+            jump:function(obj,first){
+                console.log('im jump!',obj,first);
+            }
+        });
+
+    </script>
+</body> 
+</html>
