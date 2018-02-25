@@ -6,7 +6,8 @@
 	<script type="text/javascript" src="./js/hcpage.js"></script>
 
 	 <style type="text/css">
-
+        #mpage{
+        }
 	 </style>
 </head>
 <body>    
@@ -36,6 +37,21 @@
         </div>
     </div>
 
+    <div>
+        <div class="hcpage">
+            <a href="">上一页</a>
+            <a href="">首页</a>
+            <span>...</span>
+            <span  class="hcpage-curr">3</span>
+            <a href="">4</a>
+            <span>...</span>
+            <a href="">尾页</a>
+            <a href="">下一页</a>
+            <span class="hcpage-count">共 90 条</span>
+            <span class="hcpage-skip">到第<input type="number" name="">页<button class="hcpage-skip-btn">确定</button></span>
+        </div>
+    </div>
+
     <hr />
     <h1 style="font-size: 24px">hcpage</h1>
     <div id="mpage"></div>
@@ -43,7 +59,7 @@
     <script type="text/javascript">
 
         hcpage.init({
-            layout: [ 'prev','page','next','count'],
+            layout: [ 'prev','page','next','count','skip'],
             id:'mpage',
             count : 91,
             limit : 10,

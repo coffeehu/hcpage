@@ -2,6 +2,7 @@
 	display: inline-block;
 	margin: 10px 0;
 	font-size: 0;
+	width: 100%;
 }
 .hcpage a{
 	text-decoration:none;
@@ -10,6 +11,7 @@
 .hcpage span,
 .hcpage a{
 	display: inline-block;
+	vertical-align: middle;
 	height: 28px;
 	line-height: 28px;
 	padding: 0 15px;
@@ -30,4 +32,38 @@
 .hcpage .hcpage-disabled{
 	color: #d2d2d2!important;
 	cursor: not-allowed!important;
+}
+.hcpage .hcpage-skip{
+	border: none;
+	color: #999;
+}
+.hcpage .hcpage-skip input,
+.hcpage .hcpage-skip button{
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #e2e2e2;
+	outline: none;
+	font-size: 12px;
+	text-align: center;
+}
+.hcpage .hcpage-skip input{
+	width: 40px;
+	margin: 0 10px;
+}
+.hcpage .hcpage-skip input:focus{
+	border-color:#0084ff!important;
+}
+/*.hcpage .hcpage-skip input::-webkit-outer-spin-button,
+.hcpage .hcpage-skip input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}*/
+.hcpage .hcpage-skip input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+}
+.hcpage .hcpage-skip button{
+	padding: 0 10px;
+	margin-left: 10px;
+	background-color: #fff;
+	cursor: pointer;
 }

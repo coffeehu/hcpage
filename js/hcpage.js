@@ -91,7 +91,10 @@ Page.prototype.view = function(){
             return '<a href="javascript:;" class="hcpage-next '+(options.curr==pages?'hcpage-disabled':'')+'" data-page="'+(options.curr+1)+'">&#x4E0B;&#x4E00;&#x9875;</a>';
         },
         count:function(){
-            return '<span class="hcpage-count">共 '+self.options.count+' 条</span>';
+            return '<span class="hcpage-count">共 '+options.count+' 条</span>';
+        },
+        skip:function(){
+            return '<span class="hcpage-skip">到第<input type="number" value="'+options.curr+'">页<button>确定</button>';
         }
     };
 
@@ -115,9 +118,19 @@ Page.prototype.initEvents = function(){
     var self = this;
     this.elem.onclick = function(e){
         var target = e.target;
-        if(target.tagName.toLowerCase() === 'a'){
+        var tagName = target.tagName.toLowerCase();
+        var pages = self.options.pages;
+        if(tagName === 'a'){
             var page = target.getAttribute('data-page')|0; //转为数值
-            if(page<1 || page>self.options.pages) return;
+            if(page<1 || page>pages) return;
+            self.options.curr = page;
+            self.render();
+        }
+        if(tagName === 'button'){
+            var input = self.elem.getElementsByTagName('input')[0];
+            var page = input.value | 0;
+            page = page<1?1:page;
+            page = page>pages?pages:page;
             self.options.curr = page;
             self.render();
         }
