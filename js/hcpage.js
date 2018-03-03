@@ -34,6 +34,10 @@ Page.prototype.view = function(){
     var pages = self.options.pages = Math.ceil(options.count/options.limit)||1;
 
     var views = {
+        first:function(){
+            var first = options.first || '首页';            
+            return '<a href="javascript:;" class="hcpage-first '+(options.curr==1?'hcpage-disabled':'')+'" data-page="1">'+first+'</a>';
+        },
         prev:function(){
             return '<a href="javascript:;" class="hcpage-prev '+(options.curr==1?'hcpage-disabled':'')+'" data-page="'+(options.curr-1)+'">&#x4E0A;&#x4E00;&#x9875</a>';
         },
@@ -59,7 +63,7 @@ Page.prototype.view = function(){
             //first首页
             if(index>1){
                 var first = options.first || 1;
-                pager.push('<a href="javascript:;" data-page="1">'+first+'</a>');
+                pager.push('<a href="javascript:;" class="hcpage-first" data-page="1">'+first+'</a>');
             }
             //省略号分隔符（首部）
             if(start>2){
@@ -75,20 +79,34 @@ Page.prototype.view = function(){
                 }
             }
 
-            // last末页
+            // 省略号分隔符（末尾）
             if(pages-end>=2){
                 pager.push('<span>...</span>');
             }
-            // 省略号分隔符（末尾）
+            // last末页            
             if(end<pages){
                 var last = options.last || pages;
-                pager.push('<a href="javascript:;" data-page="'+pages+'">'+pages+'</a>');
+                pager.push('<a href="javascript:;" class="hcpage-last" data-page="'+pages+'">'+last+'</a>');
             }
 
             return pager.join('');
         },
+        cpage:function(){ // custom page
+            if(options.cpage && typeof options.cpage === 'string'){
+                var result = options.cpage.match(/{\$[^}^\s]+}/g);
+                for(var i=0,l=result.length;i<l;i++){
+                    var key = result[i].split(/[$}]/)[1];
+                    options.cpage = options.cpage.replace(result[i],options[key]);
+                }
+            }
+            return options.cpage;
+        },
         next:function(){
             return '<a href="javascript:;" class="hcpage-next '+(options.curr==pages?'hcpage-disabled':'')+'" data-page="'+(options.curr+1)+'">&#x4E0B;&#x4E00;&#x9875;</a>';
+        },
+        last:function(){
+            var last = options.last || '尾页';
+            return '<a href="javascript:;" class="hcpage-last '+(options.curr==pages?'hcpage-disabled':'')+'" data-page="'+pages+'">'+last+'</a>';
         },
         count:function(){
             return '<span class="hcpage-count">共 '+options.count+' 条</span>';

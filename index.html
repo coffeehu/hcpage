@@ -59,10 +59,11 @@
     <script type="text/javascript">
 
         hcpage.init({
-            layout: [ 'prev','page','next','count','skip'],
+            layout: [ 'first','prev','page','next','last','count','skip'],
             id:'mpage',
             count : 91,
             limit : 10,
+            //cpage:'<span>{$curr}hehe<i>{$pages}</i></span>',
             //curr : 3,
             groups:3,
             jump:function(obj,first){

@@ -3,6 +3,10 @@
 	margin: 10px 0;
 	font-size: 0;
 	width: 100%;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select:none;
 }
 .hcpage a{
 	text-decoration:none;
