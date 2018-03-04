@@ -92,14 +92,17 @@ Page.prototype.view = function(){
             return pager.join('');
         },
         cpage:function(){ // custom page
-            if(options.cpage && typeof options.cpage === 'string'){
-                var result = options.cpage.match(/{\$[^}^\s]+}/g);
+            var cpage = options.cpage;
+            if(cpage && typeof cpage === 'string'){
+                var result = cpage.match(/{\$[^}^\s]+}/g);
+                console.log('result',result);
+                if(!result) return '';
                 for(var i=0,l=result.length;i<l;i++){
                     var key = result[i].split(/[$}]/)[1];
-                    options.cpage = options.cpage.replace(result[i],options[key]);
+                    cpage = cpage.replace(result[i],options[key]);
                 }
             }
-            return options.cpage;
+            return cpage;
         },
         next:function(){
             return '<a href="javascript:;" class="hcpage-next '+(options.curr==pages?'hcpage-disabled':'')+'" data-page="'+(options.curr+1)+'">&#x4E0B;&#x4E00;&#x9875;</a>';
