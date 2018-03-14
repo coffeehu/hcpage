@@ -4,6 +4,24 @@
 */
 (function(exports){
 
+var util = {
+    addcss:function(){
+        var id = 'hc-tree-css';
+        if(document.getElementById(id)) return;
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        var path = this.getPath();
+        link.rel = 'stylesheet';
+        link.href = path + '../css/hcpage.css';
+        link.id = id;
+        head.appendChild(link);
+    },
+    getPath:function(){
+        var jsPath = document.currentScript.src;
+        return jsPath.substring(0,jsPath.lastIndexOf('/')+1);
+    }
+}
+util.addcss();
 
 function Page(options){
     this.initOptions(options);
