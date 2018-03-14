@@ -6,7 +6,7 @@
 
 var util = {
     addcss:function(){
-        var id = 'hc-tree-css';
+        var id = 'hc-page-css';
         if(document.getElementById(id)) return;
         var head = document.getElementsByTagName('head')[0];
         var link = document.createElement('link');
