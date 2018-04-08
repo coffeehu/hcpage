@@ -38,6 +38,7 @@ Page.prototype.initOptions = function(options){
     this.elem = document.getElementById(this.options.id);
 }
 Page.prototype.render = function(first){
+    if(!this.elem) return;
     var view = this.view();
     this.elem.innerHTML = view;
     this.options.jump(this.options,first);
