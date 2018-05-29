@@ -21,7 +21,7 @@ var util = {
         return jsPath.substring(0,jsPath.lastIndexOf('/')+1);
     }
 }
-util.addcss();
+//util.addcss();
 
 function Page(options){
     this.initOptions(options);
