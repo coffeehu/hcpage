@@ -67,6 +67,9 @@ Page.prototype.view = function(){
 
             // 根据curr的判断当前处于哪个组
             var index = Math.floor(options.curr/options.groups)+1;
+            if(options.groups === options.curr && options.groups === pages) {
+                index--;
+            }
 
             //根据groups设置组的起止范围，如group为4，那么第一组为1~4
             var halve = Math.floor( (options.groups-1)/2 ); //index>1时，curr左边有几个页码块
